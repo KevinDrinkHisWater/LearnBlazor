@@ -1,0 +1,14 @@
+﻿<div class="row">
+    <h4 class="text-primary p-lg-4 pt-2 col-12">Grand Child Component</h4>
+    <p>There is a message - @MessageFromGrandChild</p>
+    <p>Lucky Number - @LuckyNumberFromGrandChild</p>
+</div>
+
+@code {
+    // Cascading is by type and not by name of property - Try using prop Name on CascadingValue
+    [CascadingParameter(Name = "Message")]
+    public string MessageFromGrandChild { get; set; }
+
+    [CascadingParameter(Name = "LuckyNumber")]
+    public string LuckyNumberFromGrandChild { get; set; }
+}
