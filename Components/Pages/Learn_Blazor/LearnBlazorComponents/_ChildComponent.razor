@@ -1,4 +1,6 @@
-﻿<div>
+﻿@inject IJSRuntime JSRuntime
+
+<div>
     <div class="alert alert-info">
         @Title
     </div>
@@ -32,4 +34,10 @@
     // Cascading is by type and not by name of property - Try using prop Name on CascadingValue
     [CascadingParameter(Name = "Message")]
     public string MessageFromGrandChild { get; set; }
+
+    public async Task ToastrSuccess()
+    {
+        //await JSRuntime.InvokeVoidAsync("showToastr", "success", "Success Notification");
+        await JSRuntime.ToastrSuccess("Success Notification");
+    }
 }

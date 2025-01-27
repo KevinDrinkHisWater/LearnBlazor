@@ -33,7 +33,8 @@
     private void LoadParameters()
     {
         var uri = new Uri(NavigationManager.Uri);
-        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+        // var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
         Param1 = query["Param1"];
         Param2 = query["Param2"];
         //NavigationManager.Refresh(forceReload:true);

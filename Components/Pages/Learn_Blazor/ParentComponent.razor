@@ -3,8 +3,8 @@
 <h3>Parent Component</h3>
 <CascadingValue Value="@MessageFromGrandChildTemp" Name="Message">
     <CascadingValue Value="@LuckyNumber" Name="LuckyNumber">
-        <_ChildComponent OnButtonClick="ShowMessage" 
-        Title="This title is passed as a parameter from Parent Component">
+        <_ChildComponent @ref="_childComponent" OnButtonClick="ShowMessage"
+                         Title="This title is passed as a parameter from Parent Component">
             <ChildSomeContent>Some Text between the Tags from Parent Component!!</ChildSomeContent>
             <ChildContent>
                 <p>Some Text inside the ChildContent from Parent Component!!</p>
@@ -17,7 +17,13 @@
 
 <p>@messageText</p>
 
+<div class="row">
+    <button class="btn btn-success" @onclick="() => _childComponent.ToastrSuccess()">Show Toastr Message</button>
+</div>
+
 @code {
+    // Adding a reference to use ChildComponent's function
+    private _ChildComponent _childComponent;
     public string messageText = "";
     public string MessageFromGrandChildTemp = "This is a message from Parent Component to Grand Child";
     public string LuckyNumber = "7";
